@@ -4,7 +4,7 @@ import { useProducts } from "../context/ProductsContext";
 import { useCart } from "../context/CartContext";
 import { toast } from "react-toastify";
 import { Auth } from "../context/AuthContext";
-import earbuds from "../assets/earbuds.png";
+import Headphone3D from "../components/Headphone3D";
 
 const CATEGORY_ICONS = {
   Electronics: "fa-laptop",
@@ -114,13 +114,9 @@ const Home = () => {
           </div>
 
           {/* Right side - badges */}
-          <div className="earbuds-wrapper relative flex justify-center items-center flex-1">
-            <div className="absolute w-[450px] h-[450px] rounded-full bg-lime-400/20 blur-[120px]" />
-            <img
-              src={earbuds}
-              alt="Earbuds"
-              className="relative z-10 w-[450px] animate-earbuds drop-shadow-[0_30px_80px_rgba(163,230,53,.45)]"
-            />
+          <div className="relative flex justify-center items-center flex-1">
+            <div className="absolute w-[250px] h-[250px] rounded-full bg-lime-400/20 blur-[100px]" />
+            <Headphone3D />
           </div>
 
           <div className="hidden lg:flex flex-col gap-4 flex-shrink-0">

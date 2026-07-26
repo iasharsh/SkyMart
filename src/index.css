@@ -97,20 +97,7 @@ transform:translate(var(--x),var(--y)) scale(1.2);
   background: #84cc16;
 }
 
-.earbuds-wrapper {
-  perspective: 1000px;
+.headphone-wrapper {
+  perspective: 2000px;
 }
 
-@keyframes earbuds-spin {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-
-.animate-earbuds {
-  animation: earbuds-spin 8s linear infinite;
-  transform-style: preserve-3d;
-}
