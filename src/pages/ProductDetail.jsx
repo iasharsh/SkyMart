@@ -132,7 +132,10 @@ const ProductDetail = () => {
                   <span className="text-neutral-400 text-l">In cart:</span>
                   <div className="flex items-center gap-4">
                     <button
-                      onClick={() => updateQty(product.id, cartItem.qty - 1)}
+                      onClick={() => {
+                        toast.info("Quantity decreased");
+                        updateQty(product.id, cartItem.qty - 1);
+                      }}
                       className="flex h-9 w-9 items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900 text-lg font-semibold text-white transition-all duration-200 hover:border-red-500 hover:bg-red-500 hover:text-white hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <i className="fa-solid fa-minus text-sm"></i>
@@ -143,7 +146,10 @@ const ProductDetail = () => {
                     </span>
 
                     <button
-                      onClick={() => updateQty(product.id, cartItem.qty + 1)}
+                      onClick={() => {
+                        toast.success("Quantity decreased");
+                        updateQty(product.id, cartItem.qty + 1);
+                      }}
                       className="flex h-9 w-9 items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900 text-lg font-semibold text-white transition-all duration-200 hover:border-lime-400 hover:bg-lime-400 hover:text-black hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <i className="fa-solid fa-plus text-sm"></i>

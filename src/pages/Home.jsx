@@ -29,7 +29,7 @@ const Home = () => {
   const { addToCart, cartCount, cartTotal } = useCart();
   const { loggedInUser } = useContext(Auth);
 
-  // Count of products per category, built from live product data
+  // Count of products per category
   const categoryCounts = useMemo(() => {
     const counts = {};
     products.forEach((p) => {
