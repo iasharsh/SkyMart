@@ -3,8 +3,10 @@ import React, { Suspense, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Environment, ContactShadows } from "@react-three/drei";
 
+const MODEL_PATH = `${import.meta.env.BASE_URL}models/headphone.glb`;
+
 function Model(props) {
-  const { scene } = useGLTF("/models/headphone.glb");
+  const { scene } = useGLTF(MODEL_PATH);
   const ref = useRef();
 
   useFrame(() => {
@@ -37,4 +39,4 @@ const Headphone3D = () => {
 
 export default Headphone3D;
 
-useGLTF.preload("/models/headphone.glb");
+useGLTF.preload(MODEL_PATH);
