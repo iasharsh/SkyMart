@@ -36,7 +36,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/SkyMart",
+    basename: import.meta.env.BASE_URL,
   }
 );
 
