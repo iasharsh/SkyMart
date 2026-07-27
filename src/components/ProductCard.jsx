@@ -19,10 +19,10 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-lime-500/40 bg-[#171717] hover:border-lime-400 hover:-translate-y-1 transition-all duration-300 w-full sm:w-[280px] md:w-[320px]">
+    <div className="group flex flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-[#171717] hover:border-lime-400 hover:-translate-y-2 hover:shadow-[0_18px_50px_rgba(163,230,53,0.12)] transition-all duration-300 w-full">
       {/* Image + Title wrapped in Link */}
       <Link to={`/product/${product.id}`} className="block">
-        <div className="relative flex h-48 sm:h-56 md:h-60 items-center justify-center bg-white p-4 sm:p-5">
+        <div className="relative flex h-64 items-center justify-center bg-gradient-to-b from-neutral-100 to-white p-8 overflow-hidden">
           <span className="absolute top-3 left-4 rounded-full bg-gray-500 px-3 py-1 text-xs font-semibold text-white capitalize">
             {product.category}
           </span>
