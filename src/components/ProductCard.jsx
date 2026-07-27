@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
       </Link>
 
       {/* Bottom Section (outside Link) */}
-      <div className="flex items-center justify-between border-t border-neutral-800 px-4 sm:px-5 py-3 sm:py-4 mt-auto">
+      <div className="flex items-center justify-between border-t border-neutral-800 px-4 sm:px-5 py-3 sm:py-4 mt-auto gap-3">
         <span className="text-lg sm:text-xl font-bold text-lime-400">
           ${product.price}
         </span>

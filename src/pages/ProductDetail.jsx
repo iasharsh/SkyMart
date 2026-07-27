@@ -64,7 +64,7 @@ const ProductDetail = () => {
     <div className="bg-black min-h-screen">
       <div className="max-w-6xl mx-auto px-6 pt-8 pb-16">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/shop")}
           className="mb-6 flex items-center gap-2 text-lime-400 hover:text-lime-300 cursor-pointer"
         >
           <i className="fa-solid fa-arrow-left"></i>
@@ -207,7 +207,11 @@ const ProductDetail = () => {
             ) : (
               <div className="flex gap-3 mb-6">
                 <button
-                  onClick={() => addToCart(product, 1)}
+                  onClick={() => {
+                    addToCart(product, 1);
+                    toast.success("Added to cart");
+                    setIsCartOpen(true);
+                  }}
                   className="flex-1 bg-lime-400 text-black font-semibold py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <i className="fa-solid fa-cart-shopping"></i> Add to Cart

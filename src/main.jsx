@@ -15,7 +15,7 @@ createRoot(document.getElementById("root")).render(
   <>
     <RouterProvider router={router} />
     <ToastContainer
-      position="bottom-right"
+      position="top-center"
       autoClose={2000}
       hideProgressBar={false}
       newestOnTop

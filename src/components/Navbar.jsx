@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router";
 import { Auth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { cartCount, setIsCartOpen } = useCart();
@@ -15,11 +16,12 @@ const Navbar = () => {
   const handleLogout = () => {
     setLoggedInUser(null);
     navigate("/login");
+    toast.success("Logged out succesfully");
   };
 
   return (
     <header className="sticky top-0 z-40 bg-black border-b border-neutral-800">
-      <div className="max-w-7xl mx-auto px-6 h-[76px] flex items-center justify-between">
+      <div className="relative max-w-7xl mx-auto px-6 h-[76px] flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl text-white">
           <span className="w-8 h-8 rounded-lg bg-lime-400 text-black flex items-center justify-center">
@@ -29,16 +31,57 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10 text-sm font-medium">
-          <NavLink to="/" className={({ isActive }) =>
-            isActive ? "text-lime-400" : "text-neutral-400 hover:text-white"
-          }>Home</NavLink>
-          <NavLink to="/shop" className={({ isActive }) =>
-            isActive ? "text-lime-400" : "text-neutral-400 hover:text-white"
-          }>Shop</NavLink>
-          <NavLink to="/about" className={({ isActive }) =>
-            isActive ? "text-lime-400" : "text-neutral-400 hover:text-white"
-          }>About</NavLink>
+        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-10 text-sm font-medium">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `relative py-1 transition-colors duration-300
+    after:absolute after:left-0 after:-bottom-1
+    after:h-[2px] after:bg-lime-400
+    after:transition-all after:duration-300
+    ${
+      isActive
+        ? "text-lime-400 after:w-full"
+        : "text-neutral-400 hover:text-white after:w-0 hover:after:w-full"
+    }`
+            }
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/shop"
+            className={({ isActive }) =>
+              `relative py-1 transition-colors duration-300
+    after:absolute after:left-0 after:-bottom-1
+    after:h-[2px] after:bg-lime-400
+    after:transition-all after:duration-300
+    ${
+      isActive
+        ? "text-lime-400 after:w-full"
+        : "text-neutral-400 hover:text-white after:w-0 hover:after:w-full"
+    }`
+            }
+          >
+            Shop
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `relative py-1 transition-colors duration-300
+    after:absolute after:left-0 after:-bottom-1
+    after:h-[2px] after:bg-lime-400
+    after:transition-all after:duration-300
+    ${
+      isActive
+        ? "text-lime-400 after:w-full"
+        : "text-neutral-400 hover:text-white after:w-0 hover:after:w-full"
+    }`
+            }
+          >
+            About
+          </NavLink>
         </nav>
 
         {/* Right actions */}
@@ -93,7 +136,9 @@ const Navbar = () => {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden w-10 h-10 rounded-lg border border-neutral-800 flex items-center justify-center text-gray-400 hover:text-white transition cursor-pointer"
           >
-            <i className={`fa-solid ${mobileOpen ? "fa-xmark" : "fa-bars"} text-lg`}></i>
+            <i
+              className={`fa-solid ${mobileOpen ? "fa-xmark" : "fa-bars"} text-lg`}
+            ></i>
           </button>
         </div>
       </div>
@@ -101,9 +146,27 @@ const Navbar = () => {
       {/* Mobile Nav */}
       {mobileOpen && (
         <nav className="md:hidden bg-black border-t border-neutral-800 px-6 py-4 flex flex-col gap-4">
-          <NavLink to="/" onClick={() => setMobileOpen(false)} className="text-neutral-400 hover:text-lime-400">Home</NavLink>
-          <NavLink to="/shop" onClick={() => setMobileOpen(false)} className="text-neutral-400 hover:text-lime-400">Shop</NavLink>
-          <NavLink to="/about" onClick={() => setMobileOpen(false)} className="text-neutral-400 hover:text-lime-400">About</NavLink>
+          <NavLink
+            to="/"
+            onClick={() => setMobileOpen(false)}
+            className="text-neutral-400 hover:text-lime-400"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/shop"
+            onClick={() => setMobileOpen(false)}
+            className="text-neutral-400 hover:text-lime-400"
+          >
+            Shop
+          </NavLink>
+          <NavLink
+            to="/about"
+            onClick={() => setMobileOpen(false)}
+            className="text-neutral-400 hover:text-lime-400"
+          >
+            About
+          </NavLink>
           {loggedInUser && (
             <button
               onClick={() => {
