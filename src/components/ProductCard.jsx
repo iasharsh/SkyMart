@@ -19,10 +19,10 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-[28px] border border-lime-500/40 bg-[#171717] hover:border-lime-400 hover:-translate-y-1 transition-all duration-300">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-lime-500/40 bg-[#171717] hover:border-lime-400 hover:-translate-y-1 transition-all duration-300 w-full sm:w-[280px] md:w-[320px]">
       {/* Image + Title wrapped in Link */}
       <Link to={`/product/${product.id}`} className="block">
-        <div className="relative flex h-60 items-center justify-center bg-white p-5">
+        <div className="relative flex h-48 sm:h-56 md:h-60 items-center justify-center bg-white p-4 sm:p-5">
           <span className="absolute top-3 left-4 rounded-full bg-gray-500 px-3 py-1 text-xs font-semibold text-white capitalize">
             {product.category}
           </span>
@@ -30,41 +30,43 @@ const ProductCard = ({ product }) => {
           <img
             src={product.image}
             alt={product.name}
-            className="h-40 w-40 object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-32 w-32 sm:h-36 sm:w-36 md:h-40 md:w-40 object-contain transition-transform duration-300 group-hover:scale-105"
           />
         </div>
 
-        <div className="flex flex-col p-5">
-          <p className="text-sm font-semibold capitalize text-gray-500">
+        <div className="flex flex-col p-4 sm:p-5">
+          <p className="text-xs sm:text-sm font-semibold capitalize text-gray-500">
             {product.category}
           </p>
 
-          <h3 className="mt-2 h-14 overflow-hidden text-l font-bold leading-7 text-gray-300">
+          <h3 className="mt-2 h-12 sm:h-14 overflow-hidden text-sm sm:text-base font-bold leading-6 sm:leading-7 text-gray-300">
             {product.name}
           </h3>
 
           <div className="mt-3 flex items-center gap-1 mb-2">
-            <div className="text-sm text-yellow-400">
+            <div className="text-xs sm:text-sm text-yellow-400">
               {"★".repeat(Math.round(product.rating))}
               {"☆".repeat(5 - Math.round(product.rating))}
             </div>
-            <span className="text-sm text-gray-500">({product.reviews})</span>
+            <span className="text-xs sm:text-sm text-gray-500">
+              ({product.reviews})
+            </span>
           </div>
         </div>
       </Link>
 
       {/* Bottom Section (outside Link) */}
-      <div className="flex items-center justify-between border-t border-neutral-800 px-5 py-4 mt-auto">
-        <span className="text-xl font-bold text-lime-400">
+      <div className="flex items-center justify-between border-t border-neutral-800 px-4 sm:px-5 py-3 sm:py-4 mt-auto">
+        <span className="text-lg sm:text-xl font-bold text-lime-400">
           ${product.price}
         </span>
 
         {!isInCart ? (
           <button
             onClick={handleAdd}
-            className="flex items-center gap-2 rounded-full bg-lime-400 px-4 py-2 font-semibold text-black transition-all duration-200 hover:bg-lime-300 hover:scale-105 active:scale-95 cursor-pointer"
+            className="flex items-center gap-2 rounded-full bg-lime-400 px-3 sm:px-4 py-1.5 sm:py-2 font-semibold text-black text-xs sm:text-sm transition-all duration-200 hover:bg-lime-300 hover:scale-105 active:scale-95 cursor-pointer"
           >
-            <i className="fa-solid fa-cart-shopping text-sm"></i>
+            <i className="fa-solid fa-cart-shopping text-xs sm:text-sm"></i>
             Add
           </button>
         ) : (
@@ -76,12 +78,12 @@ const ProductCard = ({ product }) => {
                 updateQty(product.id, qty - 1);
                 toast.info("Quantity decreased");
               }}
-              className="flex h-10 w-10 items-center justify-center text-lime-400 transition hover:bg-lime-400 hover:text-black cursor-pointer"
+              className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center text-lime-400 transition hover:bg-lime-400 hover:text-black cursor-pointer"
             >
-              <i className="fa-solid fa-minus text-xs"></i>
+              <i className="fa-solid fa-minus text-[10px] sm:text-xs"></i>
             </button>
 
-            <span className="min-w-[40px] text-center font-semibold text-white">
+            <span className="min-w-[32px] sm:min-w-[40px] text-center font-semibold text-white text-xs sm:text-sm">
               {qty}
             </span>
 
@@ -92,9 +94,9 @@ const ProductCard = ({ product }) => {
                 updateQty(product.id, qty + 1);
                 toast.success("Quantity updated");
               }}
-              className="flex h-10 w-10 items-center justify-center text-lime-400 transition hover:bg-lime-400 hover:text-black cursor-pointer"
+              className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center text-lime-400 transition hover:bg-lime-400 hover:text-black cursor-pointer"
             >
-              <i className="fa-solid fa-plus text-xs"></i>
+              <i className="fa-solid fa-plus text-[10px] sm:text-xs"></i>
             </button>
           </div>
         )}
